@@ -1,0 +1,48 @@
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img src="{{coin.image}}"></div>
+      <mat-card-title>{{coin.name}}</mat-card-title>
+      <mat-card-subtitle>{{coin.symbol}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card> -->
+
+<div id="wrapper">
+    <h2 class="card-group-heading">Fortsæt</h2>
+    <div class="card-container">
+  
+      <article class="card assignment-card course-id-2">
+        <header class="card-header card-backgrund-color">
+          <h1>{{symbolString}} - {{coin.name}}</h1>
+        </header>
+        <section class="card-body">
+          <div class="card-info">
+            <div class="card-info-element">
+              <div class="card-info-description">Market Cap Rank</div>
+              <div class="card-info-value">{{coin.market_cap_rank}}</div>
+            </div>
+            <div class="card-info-element">
+              <div class="card-info-description">Current Price</div>
+              <div class="card-info-value">€{{coin.current_price}}</div>
+            </div>
+            <div class="card-info-element">
+              <div class="card-info-description">Coin Icon</div>
+              <div class="card-info-value"><span class="card-info-assignment-level"><img src="{{coin.image}}" height="60px"></span></div>
+            </div>
+          </div>
+          <p class="card-body-delimiter"></p>
+          <p class="card-tags">
+            <button type="button" class="btn btn-success" (click)="addToWishlist()">Add to Watchlist</button>
+            <button type="button" class="btn btn-danger" (click)="addToWishlist()" *ngIf="router.url == '/dashboard'">Remove from Watchlist</button>
+          </p>
+        </section>
+        <footer class="card-footer">
+          <p><span class="card-progress-bar"><span class="card-progress-bar-status card-backgrund-color" data-status="50"></span></span>
+          </p>
+        </footer>
+      </article>
+    </div>
+  </div>

@@ -1,0 +1,360 @@
+.example-card {
+    margin: 0 auto;
+    max-width: 80%;
+    margin-top: 5%;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  body {
+    background-color: #edeff0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+    letter-spacing: 0.05em;
+  }
+  
+  body,
+  html {
+    width: 100%;
+    margin: 0;
+  }
+  
+  #wrapper > div {
+    font-size: 0;
+  }
+  
+  .card.course-id-1 .card-backgrund-color {
+    background-color: #80ACE9;
+  }
+  
+  .card-assignment-icon:before {
+    background-color: rgba(128, 172, 233, 0.4);
+  }
+  
+  .card.course-id-2 .card-backgrund-color {
+    background-color: #5498FD;
+  }
+  
+  .card.course-id-4 .card-backgrund-color {
+    background-color: #ED7070;
+  }
+  
+  .card-group-heading {
+    margin: 0;
+    color: #566265;
+  }
+  
+  .card-container {
+    font-size: 0;
+  }
+  
+  .card,
+  .card * {
+    box-sizing: border-box;
+  }
+  
+  .card {
+    border: 3px solid #424242;
+    border-radius: 20px;
+    width: calc(100% - 40px);
+    min-width: 300px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    height: 300px;
+    position: relative;
+    margin: 2%;
+    cursor: pointer;
+    -webkit-transition: -webkit-transform .2s ease-in, box-shadow .1s ease-in;
+    /*   -moz-transition: -moz-transform .1s ease-in, box-shadow .1s ease-in; */
+    transition: transform .2s ease-in, box-shadow .1s ease-in;
+    box-shadow: 0px 2px 2px #dfe6f0;
+  }
+  
+  @media (max-width: 340px) {
+    .card {
+      margin: 20px calc(50% - 150px);
+    }
+  }
+  
+  @media (min-width: 700px) {
+    .card {
+      width: calc(50% - 41px);
+    }
+  }
+  
+  @media (min-width: 1040px) {
+    .card {
+      width: calc(77.7777% - 41px);
+    }
+  }
+  
+  
+  /* header, footer, and body */
+  
+  .card-header,
+  .card-footer,
+  .card-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px 20px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    top: 0;
+    height: 50px;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .card-footer {
+    bottom: 0;
+    height: 50px;
+    border-radius: 0 0 5px 5px;
+    background-color: #F4F6F8;
+  }
+  
+  .card-body {
+    top: 50px;
+    bottom: 50px;
+  }
+  
+  .card-header > h1,
+  .card-body > p,
+  .card-footer > p {
+    margin: 0;
+  }
+  
+  
+  /* header content */
+  
+  .card-header > h1 {
+    font-size: 24px;
+    /* (30 - font-size) / 2 */
+    color: white;
+  }
+  
+  
+  /* body content*/
+  
+  
+  /* card-info */
+  
+  .card-info {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-info-element {
+    align-self: center;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .card-info-element {
+    width: 30%;
+  }
+  
+  .card-info-description {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    color: #B3BAC1;
+    margin-bottom: 10px;
+  }
+  
+  .card-info-value {
+    color: #576366;
+    font-weight: bold;
+    font-size: 30px;
+    height: 37px;
+    vertical-align: bottom;
+  }
+  
+  .card-info-assignment-level,
+  .card-info-deadline {
+    color: white;
+    background-color: #B3BAC1;
+    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+    border-radius: 100px;
+  }
+  
+  .card-info-assignment-level {
+    width: 40px;
+    height: 40px;
+    line-height: 30px;
+    padding-top: 2px;
+  }
+  
+  .card-info-deadline {
+    font-size: 12px;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    vertical-align: middle;
+  }
+  
+  
+  /* delimiter */
+  
+  .card-body-delimiter {
+    background-color: #EDEFF1;
+    width: 40px;
+    height: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 112px;
+    /* should be info-height + body-padding - delimiter-height / 2 = 108 + 10 - 2 = 116, but since info-values contains a kind of padding it is hardcoded */
+    left: calc(50% - 20px);
+    /* (body-width - delimiter-width) / 2 = (300 - 40) / 2 = 130 */
+  }
+  
+  
+  /* tags */
+  
+  .card-tags {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card-tag {
+    background-color: #BDC5CD;
+    align-self: center;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 4px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+  }
+  
+  
+  /* assignment type content */
+  
+  .card-assignment-icon {
+    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 40px);
+  }
+  
+  .card-assignment-icon:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    border-radius: 50%;
+  }
+  
+  .card-assignment-text {
+    height: 40%;
+    font-size: 14px;
+    line-height: 18px;
+    color: #a6b0b2;
+    position: absolute;
+    top: 60%;
+    left: 20px;
+    right: 20px;
+  }
+  
+  .ml-page-checks:after,
+  .ml-cross-check:after {
+    content: "";
+    background: url("https://cdn0.iconfinder.com/data/icons/outline-business/512/file.png");
+    background-size: 50px;
+    width: 48px;
+    height: 49px;
+    display: inline-block;
+    background-repeat: no-repeat;
+  }
+  
+  
+  /* progress bar */
+  
+  .card-progress-bar {
+    background-color: #DFE4E9;
+    border-radius: 4px;
+    height: 8px;
+    display: block;
+    margin: 11px 0;
+    position: relative;
+  }
+  
+  .card-progress-bar-status {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-radius: 4px;
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+  }
+  
+  
+  /* footer content */
+  
+  .card-footer-text {
+    display: inline-block;
+    color: #576366;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+  
+  .card-footer-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+    font-size: 14px;
+    padding: 2px 0;
+    margin: 2px 5px 2px 0;
+  }
+  
+  .ml-checkmark:after {
+    content: "✔";
+  }
+
+  .card-container{
+      width: 100%;
+      margin: 0 auto;
+      margin-left: 10%;
+  }
+
+  img{
+    border-radius: 30px;
+  }
+
+  .btn {
+    margin-top: 2%;
+    height: 60%;
+    width: 35%;
+    margin-left: 3%;
+    margin-right: 3%;
+  }

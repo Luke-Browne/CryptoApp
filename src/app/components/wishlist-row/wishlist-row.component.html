@@ -1,0 +1,9 @@
+<div class="row homecard">
+    <div class="col col-1" id="rank"><h2> {{coin.market_cap_rank}} </h2></div>
+    <div class="col col-1" id="icon"><img src="{{coin.image}}" height="60px"> </div>
+    <div class="col col-2" id="symbol"><h2> {{symbolString}} </h2></div>
+    <div class="col col-3" id="name"><h2> {{coin.name}} </h2></div>
+    <div class="col col-3" id="price"><h2> {{priceString}} </h2></div>
+    <div class="col col-2" id="change" *ngIf="test > 0" style="color: #1c993d;"><h2> {{numberString}}% </h2></div>
+    <div class="col col-2" id="change" *ngIf="test <= 0" style="color: #de1616;"><h2> {{numberString}}% </h2></div>
+</div>

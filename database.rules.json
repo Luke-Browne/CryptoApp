@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": "now < 1620514800000",  // 2021-5-9
+    ".write": "now < 1620514800000",  // 2021-5-9
+    "posts": {
+       "$uid": {
+         ".read": "$uid === auth.uid",
+         ".write": "$uid === auth.uid"
+       }
+     }
+   }
+}

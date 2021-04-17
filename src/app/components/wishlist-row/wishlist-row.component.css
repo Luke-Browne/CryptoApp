@@ -1,0 +1,80 @@
+img{
+    padding: 3px;
+    border: 3px solid #424242;
+    border-radius: 12px;
+    background-color: #d9d9d9;
+}
+
+.container{
+    margin-top: 6%;
+}
+
+.headers{
+    font-size: medium;
+}
+
+.cards-list{
+    width:95%;
+    margin:1em auto;
+  }
+  .homecard{
+    border:1px solid #eee;
+    background-color: #ededed;
+    padding:1em;
+    margin:1em;
+    height:12vh;
+    position:relative;
+    box-shadow:0px 0px 3px 3px #f7f7f7;
+  }
+  .homecard:hover{
+    background:#d9d9d9;
+    border:2px solid #5498FD;
+    box-shadow:0px 0px 0px #eee;
+  }
+  .homecard h2{
+    margin:0;
+    padding:0;
+    position:absolute;
+    bottom:20%;
+  }
+  .homecard a:link,
+  .homecard a:visited{
+    width:8em;
+    color:#000000;
+    border-radius:0px;
+    bottom:20%;
+    position:absolute;
+    padding:1em 1em;
+    text-align:center;
+    font-weight:bold;
+    line-height:1;
+  }
+  .homecard a:hover{
+    text-decoration:none;
+  }
+  .col{
+    text-align: center;
+  }
+
+  #rank{
+      left: 2%;
+  }
+  #symbol{
+      left: 5.5%;
+  }
+  #name{
+      left: 9%;
+  }
+  #price{
+      left: 8.5%;
+  }
+  #change{
+      left: 5%;
+  }
+
+  .green{
+      color: green;
+  }
+  .red{
+      color:red;
+  }

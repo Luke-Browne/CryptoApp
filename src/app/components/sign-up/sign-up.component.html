@@ -1,0 +1,25 @@
+<div id="login-box">
+  <h1>Sign Up</h1>
+  <div class="left">
+    <div class="input">
+    <input type="text" name="email" placeholder="Email" #userEmail required/>
+    <input type="password" name="password" placeholder="Password" #userPwd required/>
+    <input type="password" name="password2" placeholder="Retype password" />
+    
+    <input type="submit" name="signup_submit" value="Sign Up"
+    (click)="ngAuthService.SignUp(userEmail.value, userPwd.value)" />
+  </div>
+</div>
+  
+  <div class="right">
+    <span class="loginwith">Sign in with<br />social network</span>
+    
+    <button class="social-signin facebook" routerLink="/list-crypto" type="button" (click)="ngAuthService.FacebookAuth()">Log in with facebook</button>
+    <button class="social-signin twitter" routerLink="/list-crypto" type="button" (click)="ngAuthService.TwitterAuth()">Log in with Twitter</button>
+    <button class="social-signin google redirect" routerLink="/list-crypto" type="button" (click)="ngAuthService.GoogleAuth()">Log in with Google+</button>
+
+    <input type="submit" name="alreadyUser" value="Already a User?"
+    class="redirect" routerLink="/sign-in" />
+  </div>
+  <div class="or">OR</div>
+</div>
