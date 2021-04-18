@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
 import { DataService } from './services/data.service';
 import { NgAuthService } from "./ng-auth.service";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',

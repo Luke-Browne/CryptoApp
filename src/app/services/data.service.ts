@@ -5,11 +5,8 @@ import { retry, catchError, delay } from 'rxjs/operators';
 import { map, filter, switchMap, tap } from 'rxjs/operators';
 import { ICoin, IWatchlist } from '../models/ICoin';
 import { FirebaseApiService } from './firebase-api.service';
-import { jsonpFactory } from '@angular/http/src/http_module';
-import { waitForAsync } from '@angular/core/testing';
 import { IUser } from '../models/IUser';
 import { NgAuthService } from '../ng-auth.service';
-import { ThrowStmt } from '@angular/compiler';
 
 
 @Injectable({

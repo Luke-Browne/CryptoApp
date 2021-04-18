@@ -19,13 +19,13 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(this.router.url);
-  /*
+  
       if(this.ngAuthService.isLoggedIn) {
-        this.router.navigate(['profile'])
+        this.router.navigate(['dashboard'])
       }
-*/
+
      if(this.ngAuthService.userAdmin !== true && this.router.url=="/") {
-        this.router.navigate(['list-crypto'])
+        this.router.navigate(['sign-in'])
     }
 
       return true;

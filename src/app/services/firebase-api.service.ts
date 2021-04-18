@@ -2,9 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { ICoin, IWatchlist } from '../models/ICoin';
-import { IUser } from '../models/IUser';
-import { User } from '../ng-auth.service';
+import { IWatchlist } from '../models/ICoin';
 
 const apiURL = 'https://cors.bridged.cc/https://us-central1-cryptoapp-1ffe9.cloudfunctions.net';
 

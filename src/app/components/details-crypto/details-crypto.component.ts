@@ -5,9 +5,7 @@ import { throwError } from 'rxjs';
 import { ICoin, IWatchlist } from 'src/app/models/ICoin';
 import { IUser } from 'src/app/models/IUser';
 import { NgAuthService, User } from 'src/app/ng-auth.service';
-import { UserService } from 'src/app/services/user.service';
 import { FirebaseApiService } from '../../services/firebase-api.service';
-import { WishlistListComponent } from '../wishlist-list/wishlist-list.component';
 
 @Component({
   selector: 'app-details-crypto',

@@ -3,9 +3,9 @@ import auth from 'firebase/app';
 import "firebase/auth";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router, UrlSerializer } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlSerializer, UrlTree } from "@angular/router";
 
-import { pipe } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { customClaims, idTokenResult } from '@angular/fire/auth-guard';
 import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
@@ -160,8 +160,6 @@ export class NgAuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified
-
-
       }
 
       console.log(userState)

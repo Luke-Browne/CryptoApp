@@ -32,9 +32,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/custom.js",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/bs4-toast/dist/toast.min.css"
+              "src/assets/custom.js"
             ]
           },
           "configurations": {
@@ -104,8 +102,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/custom.js",
-              "node_modules/bs4-toast/dist/toast.min.css"
+              "src/assets/custom.js"
             ]
           }
         },

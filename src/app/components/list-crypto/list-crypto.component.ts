@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { ICoin } from 'src/app/models/ICoin';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-crypto',
