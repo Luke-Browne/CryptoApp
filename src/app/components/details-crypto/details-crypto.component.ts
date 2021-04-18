@@ -56,7 +56,7 @@ export class DetailsCryptoComponent implements OnInit {
     }
   }
 
-  deleteFromWatchlist(){
+  removeFromWatchlist(){
 
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
@@ -94,4 +94,19 @@ export class DetailsCryptoComponent implements OnInit {
     return throwError(
       'Something bad happened; please try again later.');
   }
+}
+
+export function deleteFromWatchlist(){
+
+  this.linkedUser = this.ngAuthService.userState;
+  this.userEmail = this.linkedUser.email;
+
+  console.log(this.coin.dbID);
+  console.log(this.userEmail);
+
+  return this.fireBaseApiService.deleteFromWatchlist(this.coin.dbID.toString()).subscribe((data: {}) => {
+    this.watchLists = data;
+    console.log('delete activated by ' + this.userEmail + 'coin name : ' + this.coin.name + 'dbID : ' + this.coin.dbID);
+    window.location.reload();
+  })
 }

@@ -9,6 +9,7 @@
     "src/main.ts",
     "src/polyfills.ts"
   ],
+  "types": ["jquery"],
   "include": [
     "src/**/*.d.ts"
   ],

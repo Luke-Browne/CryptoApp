@@ -12,7 +12,7 @@
 
 <div id="wrapper">
     <div class="card-container">
-  
+
       <article class="card assignment-card course-id-2">
         <header class="card-header card-backgrund-color">
           <h1>{{symbolString}} - {{coin.name}}</h1>
@@ -35,13 +35,13 @@
           <p class="card-body-delimiter"></p>
           <p class="card-tags">
             <button type="button" class="btn btn-success" (click)="addToWishlist()" *ngIf="router.url != '/dashboard'">Add to Watchlist</button>
-            <button type="button" class="btn btn-danger" (click)="deleteFromWatchlist()" *ngIf="router.url == '/dashboard'">Remove from Watchlist</button>
+            <button type="button" class="btn btn-danger" (click)="removeFromWatchlist()" *ngIf="router.url == '/dashboard'">Remove from Watchlist</button>
           </p>
         </section>
         <footer class="card-footer">
           <p><span class="card-progress-bar"><span class="card-progress-bar-status card-backgrund-color" data-status="50"></span></span>
           </p>
-        </footer>
-      </article>
+        </footer>   
+        </article>         
     </div>
   </div>

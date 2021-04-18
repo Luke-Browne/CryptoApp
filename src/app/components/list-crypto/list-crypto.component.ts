@@ -20,12 +20,16 @@ export class ListCryptoComponent implements OnInit {
 
   ngOnInit() : void{
 
-    getCoins();
+    this.getCoins();
 
   }
 
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+  getCoins(){
+    this.dataService.getCoinList().subscribe({
+      next: (coins: ICoin[]) => this.coinList = coins,
+      complete: () => console.log('coin service finished'),
+      error: (mess) => this.message = mess
+    })
   }
 
   clicked(coin: ICoin): void {
@@ -42,12 +46,4 @@ export class ListCryptoComponent implements OnInit {
   }
 
   
-}
-
-export function getCoins(){
-  this.dataService.getCoinList().subscribe({
-    next: (coins: ICoin[]) => this.coinList = coins,
-    complete: () => console.log('coin service finished'),
-    error: (mess) => this.message = mess
-  })
 }

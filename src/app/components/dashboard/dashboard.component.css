@@ -148,7 +148,7 @@ body {
       width: 35%;
     }
     .profile-usertitle-job {
-      font-size: 50%;
+      font-size: 75%;
     }
   }
   @media screen and (max-width: 900px) {
@@ -156,6 +156,6 @@ body {
       width: 40%;
     }
     .profile-usertitle-job {
-      font-size: 40%;
+      font-size: 80%;
     }
   }

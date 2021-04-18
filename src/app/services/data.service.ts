@@ -43,73 +43,53 @@ export class DataService {
     )
   }
 
-  getWatchlists(): Observable<IWatchlist[]>{
-    return this._http.get<IWatchlist[]>(this.firebaseFunctions + '/getWatchlists')
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-  )}
+  getWatchlistList(): Observable<IWatchlist[]>  {
 
-  getWatchlistList(): Observable<ICoin[]>  {
+    console.log('start of getWatchlistList');
 
     let i = 0;
-
-    this.getCoinList();
 
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
     this.dbID = [];
 
-/*     this.getCoinList().subscribe((res: ICoin[]) => {
-      this.fullList = res;
-    }); */
-
     this.getWatchlists().subscribe((res: IWatchlist[]) => {
       this.watchList = res;
-    })
-
-    if(this.watchList == undefined){
-      this.getWatchlists().subscribe((res: IWatchlist[]) => {
-        this.watchList = res;
-      })
-
-      console.log('fail');
-    }else{
+      console.log('watchlist: ' + JSON.stringify(this.watchList));
       this.watchList.forEach(watchlist => {
         if(this.userEmail == watchlist.userEmail){
           this.dbID[i] = watchlist.dbID;
           i++;
           this.watchlistID = watchlist.id;
-          console.log('dbID: ' + this.watchList)
+          console.log('dbID: ' + JSON.stringify(this.watchlistID));
           this.idString = this.idString + (this.watchlistID + ',');
         }
-      }) 
+      });
+    })
 
       i = 0;
 
       if(this.idString != ''){
-        return this._http.get<ICoin[]>(`${this.watchlistURL}` + `${this.idString}` + `${this.filters}`)
+        return this._http.get<IWatchlist[]>(`${this.watchlistURL}` + `${this.idString}` + `${this.filters}`)
         .pipe(
           tap(data => data.forEach(element => {
             console.log(this.dbID[i]);
+            console.log(JSON.stringify(element));
             element.dbID = this.dbID[i]
             i++;
-            console.log(element)
+            console.log(JSON.stringify(element));
           })),
           catchError(this.handleError)
         )
       }
-    }
-
-/*       this.fullList.forEach(coin => {
-        this.watchList.forEach(watchlist => {
-          this.watchlistID = watchlist.id;
-        })
-      if(coin.id == this.watchlistID){
-        console.log('match : ' + this.watchlistID);
-        this.idString = this.idString + (this.watchlistID + ',');
-      }}); */
   }
+
+  getWatchlists(): Observable<IWatchlist[]>{
+    return this._http.get<IWatchlist[]>(this.firebaseFunctions + '/getWatchlists')
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+  )}
 
   handleError(error :HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

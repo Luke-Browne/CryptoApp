@@ -1,0 +1,17 @@
+.displayTable {
+    margin-top: 5%;
+}
+.displayTableCell {
+    width: 50%;
+    margin: 0 auto;
+}
+h2 {
+    margin-left: 35%;
+}
+input {
+    margin-top: 5%;
+}
+.formGroup {
+    width: 75%;
+    margin: 0 auto;
+}

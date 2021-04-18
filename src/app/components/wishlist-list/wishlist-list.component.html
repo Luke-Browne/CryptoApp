@@ -17,7 +17,7 @@
 </div>
 
 <hr class="clearfix">
-    <app-wishlist-row class="card" *ngFor="let c of coinList;"
+    <app-wishlist-row class="card" *ngFor="let c of watchlists;"
                     [coin] = "c"
                     (click)='clicked(c)'
                     [class.bg-dark]="isSelected(c)">
