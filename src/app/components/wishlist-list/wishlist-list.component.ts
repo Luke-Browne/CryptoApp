@@ -8,6 +8,7 @@ import { ICoin } from 'src/app/models/ICoin';
 import { DataService } from 'src/app/services/data.service';
 import { NgForOf } from '@angular/common';
 import { delay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,19 +26,24 @@ export class WishlistListComponent implements OnInit {
   currentCoin: ICoin;
   currentPrice: number;
 
-  constructor(public ngAuthService: NgAuthService, private fireBaseApiService: FirebaseApiService, private dataService: DataService) { }
+  constructor(public ngAuthService: NgAuthService, private fireBaseApiService: FirebaseApiService, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
 
-    //  this.loadWishlists();
-
-    this.dataService.getWatchlistList().subscribe({
-      next: (coins: ICoin[]) => this.coinList = coins,
-      complete: () => console.log(this.coinList),
-      error: (mess) => this.message = mess
-    });
+    try{
+      this.dataService.getWatchlistList().subscribe({
+        next: (coins: ICoin[]) => this.coinList = coins,
+        complete: () => console.log(this.coinList),
+        error: (mess) => this.message = mess
+      });
+    }
+    catch(Error){
+      alert(Error.message);
+      this.router.navigate(['list-crypto']);
+      alert('View dashboard now');
+    }
   }
 
   /*   loadWishlists() {

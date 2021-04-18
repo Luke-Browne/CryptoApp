@@ -22,7 +22,8 @@
     background: #FFF;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    border: 2.5px solid #5498FD;
+    border: 4px double #5498FD;
+    background-color: #ededed;
   }
   
   .left {
@@ -113,7 +114,7 @@
   
   .right {
     position: absolute;
-    top: 0;
+    top: 30%;
     right: 0;
     box-sizing: border-box;
     padding: 40px;
@@ -135,8 +136,8 @@
   .right input {
     width: 100%;
     margin: 0 auto;
-    margin-top: 18%;
-  }
+    margin-top: 28%;
+    }
   
   button.social-signin {
     margin-bottom: 20px;
@@ -176,5 +177,10 @@
 
   .input{
       margin-top: 9%;
+  }
+
+  h1{
+    font-size: 250%;
+    font-weight: 400;
   }
   

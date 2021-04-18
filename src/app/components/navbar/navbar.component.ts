@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
-import { DataService } from './services/data.service';
-import { NgAuthService } from "./ng-auth.service";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { NgAuthService } from 'src/app/ng-auth.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class AppComponent {
+export class NavbarComponent  {
 
   title = 'angular-firebase-authentication';
 
   items: Observable<any[]>;
+
+  public isCollapsed = true;
   
   constructor(private _data: DataService, public ngAuthService: NgAuthService, public db:AngularFireDatabase) {
     this.items = db.list('items').valueChanges();

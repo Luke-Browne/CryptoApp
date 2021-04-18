@@ -6,12 +6,13 @@ import { ICoin, IWatchlist } from '../models/ICoin';
 import { IUser } from '../models/IUser';
 import { User } from '../ng-auth.service';
 
+const apiURL = 'https://cors.bridged.cc/https://us-central1-cryptoapp-1ffe9.cloudfunctions.net';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseApiService {
 
-  apiURL = 'https://cors.bridged.cc/https://us-central1-cryptoapp-1ffe9.cloudfunctions.net'
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,18 @@ export class FirebaseApiService {
   }
 
   addToWatchlist(id:string, symbol:string, userEmail:string): Observable<IWatchlist> {
-    return this.http.post<IWatchlist>(this.apiURL + '/addToWatchlist?id=' + id + '&symbol=' + symbol + '&userEmail=' + userEmail, null)
+    return this.http.post<IWatchlist>(apiURL + '/addToWatchlist?id=' + id + '&symbol=' + symbol + '&userEmail=' + userEmail, null)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  deleteFromWatchlist(dbID:string) : Observable<IWatchlist> {
+
+    console.log('dbID = ' + dbID);
+
+    return this.http.delete<IWatchlist>(apiURL + '/deleteFromWatchlist?dbID=' + dbID)
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -42,6 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsCryptoComponent } from './components/details-crypto/details-crypto.component';
 import { WishlistRowComponent } from './components/wishlist-row/wishlist-row.component';
 import { WishlistListComponent } from './components/wishlist-list/wishlist-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { WishlistListComponent } from './components/wishlist-list/wishlist-list.
     DetailsCryptoComponent,
     WishlistRowComponent,
     WishlistListComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

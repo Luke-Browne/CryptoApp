@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+    <img width="8%" id="icon" class="navbar-brand" src="https://www.pngkit.com/png/detail/592-5921702_line-graph-going-up-crescimento-vetor-png.png">
+    <a class="navbar-brand nav-link" href="/list-crypto">Crypto-Chads.com</a>
+    
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <button type="button" class="btn btn-success" id="goToMarket"><a class="nav-link" routerLink="list-crypto">View Crypto Market</a></button>
+            </li>
+            <li class="nav-item active">
+                <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="ngAuthService.userState" id="dashboard"><a class="nav-link" routerLink="/dashboard" routerLinkActive="active"> Dashboard </a></button>
+            </li>
+            <li class="nav-item active user" id="signup-btn"  *ngIf="!ngAuthService.userState">
+                <a href="/sign-up" class="nav-link" data-toggle="modal"><span class="d-none d-sm-inline d-xl-block px-1">Sign Up</span></a>
+            </li>
+            <li class="nav-item active user" id="login-btn" *ngIf="!ngAuthService.userState">
+                <a href="/sign-in" class="nav-link" data-toggle="modal"><span class="d-none d-sm-inline d-xl-block px-1">Log In</span></a>
+            </li>
+            <li class="nav-item active user" id="logout-btn" *ngIf="ngAuthService.userState">
+                <a href="/sign-in" class="nav-link" data-toggle="modal" (click)="ngAuthService.SignOut()">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

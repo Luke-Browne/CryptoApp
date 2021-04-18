@@ -13,6 +13,7 @@ const getWatchlistsFromDatabase = (res) => {
         snapshot => {
             snapshot.forEach(item => {
                 watchlists.push({
+                    dbID: item.key,
                     id: item.val().id,
                     symbol: item.val().symbol,
                     userEmail: item.val().userEmail
@@ -61,4 +62,17 @@ exports.getWatchlists = functions.https.onRequest((req, res) => {
         getWatchlistsFromDatabase(res);
         console.log(res);
     });
+})
+
+exports.deleteFromWatchlist = functions.https.onRequest((req, res) => {
+    return corsHandler(req, res, () => {
+        if(req.method !== 'DELETE') {
+            return res.status(401).json({
+                message: 'Not allowed dude...'
+              })
+        }
+        const dbID = req.query.dbID;
+        db.child(dbID).remove();
+        getWatchlistsFromDatabase(res);
+    })
 })

@@ -7,6 +7,7 @@ import { IUser } from 'src/app/models/IUser';
 import { NgAuthService, User } from 'src/app/ng-auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { FirebaseApiService } from '../../services/firebase-api.service';
+import { WishlistListComponent } from '../wishlist-list/wishlist-list.component';
 
 @Component({
   selector: 'app-details-crypto',
@@ -18,7 +19,7 @@ export class DetailsCryptoComponent implements OnInit {
   @Input() coin: ICoin
   @Input() wishList: IWatchlist
 
-  wishLists: any = [];
+  watchLists: any = [];
 
   symbolValue = '';
   nameValue = '';
@@ -30,6 +31,7 @@ export class DetailsCryptoComponent implements OnInit {
   symbolString:string;
   linkedUser: IUser;
   userEmail:string;
+  firebaseID:string;
 
   constructor(private fireBaseApiService: FirebaseApiService, private ngAuthService: NgAuthService, public router: Router) { }
 
@@ -40,12 +42,31 @@ export class DetailsCryptoComponent implements OnInit {
 
   addToWishlist() {
 
+    if(this.ngAuthService.userState != undefined){
+
+      this.linkedUser = this.ngAuthService.userState;
+      this.userEmail = this.linkedUser.email;
+
+      return this.fireBaseApiService.addToWatchlist(this.coin.id, this.coin.symbol, this.userEmail.toString()).subscribe((data: {}) => {
+        this.watchLists = data;
+        console.log('add activated by ' + this.userEmail + ' data : ' + this.watchLists);
+      })
+    }else{
+      console.log('user not logged in!');
+    }
+  }
+
+  deleteFromWatchlist(firebaseID:string){
+
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
 
-    return this.fireBaseApiService.addToWatchlist(this.coin.id, this.coin.symbol, this.userEmail.toString()).subscribe((data: {}) => {
-      this.wishLists = data;
-      console.log('add activated by ' + this.userEmail + ' data : ' + this.wishLists);
+    console.log(this.coin.dbID);
+    console.log(this.userEmail);
+
+    return this.fireBaseApiService.deleteFromWatchlist(this.coin.dbID.toString()).subscribe((data: {}) => {
+      this.watchLists = data;
+      console.log('delete activated by ' + this.userEmail + 'coin name : ' + this.coin.name + 'dbID : ' + this.coin.dbID);
     })
   }
 

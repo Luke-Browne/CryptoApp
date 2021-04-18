@@ -11,7 +11,6 @@
 </mat-card> -->
 
 <div id="wrapper">
-    <h2 class="card-group-heading">Fortsæt</h2>
     <div class="card-container">
   
       <article class="card assignment-card course-id-2">
@@ -35,8 +34,8 @@
           </div>
           <p class="card-body-delimiter"></p>
           <p class="card-tags">
-            <button type="button" class="btn btn-success" (click)="addToWishlist()">Add to Watchlist</button>
-            <button type="button" class="btn btn-danger" (click)="addToWishlist()" *ngIf="router.url == '/dashboard'">Remove from Watchlist</button>
+            <button type="button" class="btn btn-success" (click)="addToWishlist()" *ngIf="router.url != '/dashboard'">Add to Watchlist</button>
+            <button type="button" class="btn btn-danger" (click)="deleteFromWatchlist()" *ngIf="router.url == '/dashboard'">Remove from Watchlist</button>
           </p>
         </section>
         <footer class="card-footer">

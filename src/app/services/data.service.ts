@@ -18,12 +18,12 @@ import { ThrowStmt } from '@angular/compiler';
 export class DataService {
 
   fullList: ICoin[];
-  wtf: ICoin[];
   watchList: IWatchlist[];
   watchlistID: string;
   message:string;
   linkedUser: IUser;
   userEmail:string;
+  dbID:string[];
 
   private apiURL = 'https://api.coingecko.com/api/v3//coins/markets?vs_currency=eur&per_page=50&page=1&sparkline=true';
   private watchlistURL = 'https://api.coingecko.com/api/v3//coins/markets?vs_currency=eur&ids=';
@@ -52,10 +52,13 @@ export class DataService {
 
   getWatchlistList(): Observable<ICoin[]>  {
 
+    let i = 0;
+
     this.getCoinList();
 
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
+    this.dbID = [];
 
 /*     this.getCoinList().subscribe((res: ICoin[]) => {
       this.fullList = res;
@@ -74,10 +77,28 @@ export class DataService {
     }else{
       this.watchList.forEach(watchlist => {
         if(this.userEmail == watchlist.userEmail){
+          this.dbID[i] = watchlist.dbID;
+          i++;
           this.watchlistID = watchlist.id;
+          console.log('dbID: ' + this.watchList)
           this.idString = this.idString + (this.watchlistID + ',');
         }
       }) 
+
+      i = 0;
+
+      if(this.idString != ''){
+        return this._http.get<ICoin[]>(`${this.watchlistURL}` + `${this.idString}` + `${this.filters}`)
+        .pipe(
+          tap(data => data.forEach(element => {
+            console.log(this.dbID[i]);
+            element.dbID = this.dbID[i]
+            i++;
+            console.log(element)
+          })),
+          catchError(this.handleError)
+        )
+      }
     }
 
 /*       this.fullList.forEach(coin => {
@@ -88,14 +109,6 @@ export class DataService {
         console.log('match : ' + this.watchlistID);
         this.idString = this.idString + (this.watchlistID + ',');
       }}); */
-
-      if(this.idString != ''){
-        return this._http.get<ICoin[]>(`${this.watchlistURL}` + `${this.idString}` + `${this.filters}`)
-        .pipe(
-          tap(data => console.log('Wishlist : ' + JSON.stringify(data)),
-          catchError(this.handleError)
-        ))
-      }
   }
 
   handleError(error :HttpErrorResponse) {

@@ -38,6 +38,7 @@ body {
     margin: 0 auto;
     width: 20%;
     padding: 2%;
+    background-color: #ededed;
   }
   
   .profile-userpic img {
@@ -132,4 +133,20 @@ body {
     padding: 20px;
     background: #fff;
     min-height: 460px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    .profile-usertitle-job {
+      font-size: x-small;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    .profile-usertitle-job {
+      font-size: 50%;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .profile-usertitle-job {
+      font-size: 40%;
+    }
   }
