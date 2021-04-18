@@ -63,7 +63,7 @@ export class NgAuthService {
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['list-crypto']);
           });
           firebase.auth().currentUser.getIdTokenResult(true)
           .then((idTokenResult) => {
@@ -83,8 +83,9 @@ export class NgAuthService {
         })
     }
   
-    SignUp(email, password) {
-      return this.afAuth.createUserWithEmailAndPassword(email, password)
+    SignUp(email, password, password2) {
+      if(password == password2){
+        return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
           this.SendVerificationMail();
           this.SetUserData(result.user);
@@ -98,6 +99,10 @@ export class NgAuthService {
         }).catch((error) => {
           window.alert(error.message)
         })
+      }else{
+        alert('Passwords do not match');
+        return 0;
+      }
     }
 
     SendVerificationMail() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { ICoin } from 'src/app/models/ICoin';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-crypto',
@@ -18,11 +19,13 @@ export class ListCryptoComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() : void{
-    this.dataService.getCoinList().subscribe({
-      next: (coins: ICoin[]) => this.coinList = coins,
-      complete: () => console.log('coin service finished'),
-      error: (mess) => this.message = mess
-    })
+
+    getCoins();
+
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   clicked(coin: ICoin): void {
@@ -39,4 +42,12 @@ export class ListCryptoComponent implements OnInit {
   }
 
   
+}
+
+export function getCoins(){
+  this.dataService.getCoinList().subscribe({
+    next: (coins: ICoin[]) => this.coinList = coins,
+    complete: () => console.log('coin service finished'),
+    error: (mess) => this.message = mess
+  })
 }

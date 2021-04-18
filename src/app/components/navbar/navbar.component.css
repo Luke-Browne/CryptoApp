@@ -251,4 +251,14 @@ div#crypto-container{
       #logout-btn {
           width: 2%;
       }
+      #login-btn {
+        width: 20%;
+        margin: 1% 50% 0 45%;
+        font-size: x-large;
+    }
+    #signup-btn {
+        width: 20%;
+        margin: 1% 50% 0 44%;
+        font-size: x-large;
+    }
   }

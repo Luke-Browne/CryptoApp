@@ -4,10 +4,10 @@
     <div class="input">
     <input type="text" name="email" placeholder="Email" #userEmail required/>
     <input type="password" name="password" placeholder="Password" #userPwd required/>
-    <input type="password" name="password2" placeholder="Retype password" />
+    <input type="password" name="password2" placeholder="Retype password" #confirmPwd />
     
     <input type="submit" name="signup_submit" value="Sign Up"
-    (click)="ngAuthService.SignUp(userEmail.value, userPwd.value)" />
+    (click)="ngAuthService.SignUp(userEmail.value, userPwd.value, confirmPwd.value)" />
   </div>
 </div>
   

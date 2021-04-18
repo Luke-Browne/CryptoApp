@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListCryptoComponent } from './list-crypto.component';
+import { getCoins, ListCryptoComponent } from './list-crypto.component';
+import { ICoin } from '../../models/ICoin';
 
 describe('ListCryptoComponent', () => {
   let component: ListCryptoComponent;

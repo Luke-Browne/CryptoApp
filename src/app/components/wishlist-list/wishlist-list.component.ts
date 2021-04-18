@@ -42,7 +42,10 @@ export class WishlistListComponent implements OnInit {
     catch(Error){
       alert(Error.message);
       this.router.navigate(['list-crypto']);
-      alert('View dashboard now');
+      this.router.resetConfig;
+
+      this.router.navigate(['dashboard']);
+      alert('Please refresh dashboard to view your watchlist');
     }
   }
 

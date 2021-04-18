@@ -56,7 +56,7 @@ export class DetailsCryptoComponent implements OnInit {
     }
   }
 
-  deleteFromWatchlist(firebaseID:string){
+  deleteFromWatchlist(){
 
     this.linkedUser = this.ngAuthService.userState;
     this.userEmail = this.linkedUser.email;
