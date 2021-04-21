@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
+  firebase: { // details of my firebase app
     apiKey: "AIzaSyA-hwDBIjksXXkEZmuu_NMrZ7dN7BH2AOg",
     authDomain: "cryptoapp-1ffe9.firebaseapp.com",
     databaseURL: "https://cryptoapp-1ffe9-default-rtdb-fcb2b.europe-west1.firebasedatabase.app",

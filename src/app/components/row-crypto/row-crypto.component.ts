@@ -21,7 +21,7 @@ export class RowCryptoComponent implements OnInit {
   ngOnInit(): void {
     this.pcString = this.coin.price_change_percentage_24h.toString();
     this.numberString = parseFloat(this.pcString).toFixed(2);
-    this.test = +this.numberString;
+    this.test = +this.numberString;                   // Formatting the row output
     this.symbolString = this.coin.symbol.toUpperCase();
     this.priceString = '€' + parseFloat(this.coin.current_price.toString()).toFixed(2);
   }

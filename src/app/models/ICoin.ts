@@ -1,7 +1,7 @@
 import { User } from "../ng-auth.service";
 import { IUser } from "./IUser";
 
-export interface ICoin {
+export interface ICoin { 
     dbID:string,
     id:string,
     symbol:string,

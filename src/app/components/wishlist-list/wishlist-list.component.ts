@@ -21,33 +21,23 @@ export class WishlistListComponent implements OnInit {
   message:string;
   currentCoin: ICoin;
   currentPrice: number;
-  coin: IWatchlist[];
+  coin: ICoin;
 
   constructor(public ngAuthService: NgAuthService, private fireBaseApiService: FirebaseApiService, private dataService: DataService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.linkedUser = this.ngAuthService.userState;
-    this.userEmail = this.linkedUser.email;
-
-    try{
+  ngOnInit() {
+    try{ // gets the user watchlists from the getWatchLists serverless function
       this.dataService.getWatchlistList().subscribe({
-        next: coin => this.watchlists = coin,
-        complete: () => console.log('WATCHLIST : ' + JSON.stringify(this.watchlists)), 
+        next: (coins: ICoin[]) => this.watchlists = coins,
+        complete: () => console.log('watchlist service finished'),
         error: (mess) => this.message = mess
       });
     }
     catch(Error){
-      this.getCoins();
-      this.dataService.getWatchlistList().subscribe({
-        next: coin => this.watchlists = coin,
-        complete: () => console.log('WATCHLIST : ' + JSON.stringify(this.watchlists)), 
-        error: (mess) => this.message = mess
-      });
-/*      alert(Error.message);
-      this.router.navigate(['list-crypto']);
-
-      this.router.navigate(['dashboard']);
-      alert('Please refresh dashboard to view your watchlist');  */
+      this.router.navigate(['list-crypto']); // I've implimented this catch to deal with the strange issue I have
+                                        // after a refresh you have to return to the crypto market and back to the dashboard
+      this.router.navigate(['dashboard']);  // to display your watchlists
+      alert('Please refresh dashboard to view your watchlist - or add a coin to your watchlist'); 
     }
   }
 
@@ -62,7 +52,7 @@ export class WishlistListComponent implements OnInit {
       next: (coins: ICoin[]) => this.coinList = coins,
       complete: () => console.log('coin service finished'),
       error: (mess) => this.message = mess
-    })
+    });
   }
 
   clicked(coin: ICoin): void {
@@ -78,4 +68,3 @@ export class WishlistListComponent implements OnInit {
     }
   }
 }
-

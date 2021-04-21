@@ -21,6 +21,7 @@ export class FirebaseApiService {
     })
   }
 
+  // calls the addToWatchlist function
   addToWatchlist(id:string, symbol:string, userEmail:string): Observable<IWatchlist> {
     return this.http.post<IWatchlist>(apiURL + '/addToWatchlist?id=' + id + '&symbol=' + symbol + '&userEmail=' + userEmail, null)
     .pipe(
@@ -29,11 +30,21 @@ export class FirebaseApiService {
     )
   }
 
+    // calls the deleteFromWatchlist function
   deleteFromWatchlist(dbID:string) : Observable<IWatchlist> {
 
     console.log('dbID = ' + dbID);
 
     return this.http.delete<IWatchlist>(apiURL + '/deleteFromWatchlist?dbID=' + dbID)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  getWatchlists() : Observable<IWatchlist[]> {
+
+    return this.http.get<IWatchlist[]>(apiURL + '/getWatchlists')
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -18,11 +18,11 @@ export class ListCryptoComponent implements OnInit {
 
   ngOnInit() : void{
 
-    this.getCoins();
+    this.getCoins(); // calls the method when the page loads
 
   }
 
-  getCoins(){
+  getCoins(){ // populates this.coinList with the data returned from the API
     this.dataService.getCoinList().subscribe({
       next: (coins: ICoin[]) => this.coinList = coins,
       complete: () => console.log('coin service finished'),
@@ -31,11 +31,11 @@ export class ListCryptoComponent implements OnInit {
   }
 
   clicked(coin: ICoin): void {
-    this.currentCoin = coin;
-    document.documentElement.scrollTop = 0;
+    this.currentCoin = coin; // Sets the clicked coin to this.currentCoin
+    document.documentElement.scrollTop = 0; // scrolls to top of page to view details component
   }
 
-  isSelected(coin: ICoin): boolean {
+  isSelected(coin: ICoin): boolean { 
     if(!coin || !this.currentCoin) {
       return false;
     }else {

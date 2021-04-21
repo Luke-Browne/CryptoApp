@@ -58,7 +58,7 @@ export class NgAuthService {
     }
 
 
-
+    // signing in with email and password
     SignIn(email, password) {
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
@@ -83,8 +83,9 @@ export class NgAuthService {
         })
     }
   
+    // signing up with email and password
     SignUp(email, password, password2) {
-      if(password == password2){
+      if(password == password2){ // passwords must match
         return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
           this.SendVerificationMail();

@@ -38,22 +38,24 @@ export class DetailsCryptoComponent implements OnInit {
     this.symbolString = this.coin.symbol.toUpperCase();
   }
 
+  // uses the firebase service to call the addToWatchlist serverless function
   addToWishlist() {
 
-    if(this.ngAuthService.userState != undefined){
+    if(this.ngAuthService.userState != undefined){ // user must be logged in to call function
 
       this.linkedUser = this.ngAuthService.userState;
       this.userEmail = this.linkedUser.email;
 
       return this.fireBaseApiService.addToWatchlist(this.coin.id, this.coin.symbol, this.userEmail.toString()).subscribe((data: {}) => {
         this.watchLists = data;
-        console.log('add activated by ' + this.userEmail + ' data : ' + this.watchLists);
+        console.log('add activated by ' + this.userEmail + ' data : ' + this.watchLists); // logs the action
       })
     }else{
-      console.log('user not logged in!');
+      console.log('user not logged in!'); 
     }
   }
 
+  // uses the firebase service to call the deleteFromWatchlist serverless function
   removeFromWatchlist(){
 
     this.linkedUser = this.ngAuthService.userState;
